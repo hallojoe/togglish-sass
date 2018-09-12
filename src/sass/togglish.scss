@@ -1,0 +1,55 @@
+@import "mixins/togglish-helper.scss";
+
+$a: ( 
+  vars: ( --togglish-display: none ),
+  vars-checked: ( --togglish-display: block ),
+  target: ( display: var(--togglish-display) )
+);
+
+$b: (
+  vars: (
+    --togglish-target-transition:max-height $nav-transition-duration ease-out,
+    --togglish-target-max-height:0px,
+    --togglish-target-overflow: hidden
+  ),
+  vars-checked: (
+    --togglish-target-transition:max-height $nav-transition-duration ease-in,
+    --togglish-target-max-height:500px,
+    --togglish-target-overflow: hidden
+  ),
+  target: (
+    transition: var(--togglish-target-transition),
+    overflow: var(--togglish-target-overflow),
+    max-height:var(--togglish-target-max-height),
+  )
+);
+
+$c: (
+  vars: (
+    --togglish-target-background: red,
+  ),
+  vars-checked: (
+    --togglish-target-background: blue,
+  ),
+  target: (
+    background: var(--togglish-target-background),
+  )
+);
+  
+.togglish {
+  @include togglish-helper(
+    map-get($a, vars), 
+    map-get($a, vars-checked), 
+    map-get($a, target)
+  );
+}
+
+.togglish-alt {
+  @include togglish-helper(
+    map-get($b, vars), 
+    map-get($b, vars-checked), 
+    map-get($b, target)
+  );
+}
+
+

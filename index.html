@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+
+    <h1>Togglish</h1>
+    <p>This thing show how you can use <code>radio</code> or <code>checkbox</code> <code>:checked</code> to toggle properties on a sibling element without using any JavaScript.</p>
+
+    <p>The HTML and CSS footprints are minimal:</p>
+    <h2>Markup</h2>
+    <pre class="example">&lt;div class="togglish"&gt;
+  &lt;input id="togglish-check" type="checkbox" /&gt;
+  &lt;label for="togglish-check"&gt;Toggle&lt;/label&gt;
+  &lt;div class="target"&gt;
+    ...
+  &lt;/div&gt;
+&lt;/div&gt;</pre>      
+  <h2>CSS</h2>
+  <pre class="example">.togglish {
+    --togglish-display: none; 
+  }
+.togglish .target {
+  display: var(--togglish-display); 
+}
+.togglish > input[type='checkbox']:checked ~ label + .target,
+.togglish > input[type='radio']:checked ~ label + .target {
+  --togglish-display: block; 
+}
+    </pre>
+
+    <p>Thats it - you are good to go. Check out the examples below </p>
+
+    <h2>Result</h2>
+
+    <p>Using a checkbox:</p>
+    <div class="example">
+      <div class="togglish">
+        <input id="checkbox-0" type="checkbox" />
+        <label for="checkbox-0">Check this to show additional content</label>
+        <div class="target">
+          <h4>Additional content</h4>
+          <p>Great choice!</p>
+        </div>
+      </div>
+    </div>
+
+    <p>Using a radio set:</p>
+    <div class="example">
+      <div class="togglish">
+        <input id="radio-0" type="radio" name="radio" />
+        <label for="radio-0">Choose me im good</label>
+        <div class="target">
+          <blockquote>Good choice!</blockquote>
+        </div>
+      </div>
+      <div class="togglish">
+        <input id="radio-1" type="radio" name="radio" /> 
+        <label for="radio-1">Choose me, I'm the best</label>
+        <div class="target">
+          <blockquote>Best choice!</blockquote>
+        </div>
+      </div>
+    </div>
+
+    <p>Using a custom icon and embeding it into something real:</p>
+    <div class="example">
+      <nav class="pretty">
+        <div class="home logo">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 611.98 611.98" style="enable-background:new 0 0 611.98 611.98;" xml:space="preserve" width="40" height="40">
+            <g id="rocket">
+              <g>
+                <path d="M85.311,478.813c-21.604,0-39.875,14.307-45.832,33.957l-20.799,68.585c-0.268,0.881-0.402,1.82-0.402,2.797
+                  c0,5.286,4.29,9.576,9.576,9.576c0.977,0,1.916-0.153,2.796-0.402l68.585-20.8c19.65-5.956,33.957-24.228,33.957-45.832
+                  C133.192,500.245,111.76,478.813,85.311,478.813z M583.277,0c-103.291,0-202.961,4.501-286.81,59.104
+                  c-44.204,28.786-80.919,69.083-110.548,114.13c-71.688,4.386-138.416,40.699-180.57,99.785
+                  c-5.746,8.063-6.934,18.521-3.16,27.656c3.773,9.155,11.989,15.686,21.757,17.352c25.818,4.348,54.413,15.936,83.275,33
+                  c-5.209,19.114-9.461,37.673-12.468,55.045c-1.609,9.192,1.379,18.635,7.987,25.224l77.932,77.912
+                  c5.439,5.439,12.755,8.408,20.301,8.408c1.647,0,3.275-0.134,4.922-0.422c17.391-3.007,35.949-7.259,55.063-12.468
+                  c17.065,28.901,28.652,57.496,33.019,83.313c1.647,9.768,8.216,17.965,17.353,21.776c3.543,1.455,7.258,2.164,10.975,2.164
+                  c5.898,0,11.74-1.819,16.682-5.324c59.066-42.136,95.398-108.882,99.746-180.589c45.047-29.648,85.344-66.345,114.111-110.567
+                  c54.564-83.793,59.123-187.619,59.123-286.81C612.006,12.851,599.135,0,583.277,0z M63.056,278.382
+                  c25.319-26.009,57.477-44.146,92.468-52.555c-13.215,25.856-24.381,52.287-33.594,78.334
+                  C102.088,293.225,82.304,284.434,63.056,278.382z M333.623,548.949c-6.053-19.286-14.844-39.07-25.799-58.894
+                  c26.066-9.212,52.498-20.378,78.354-33.612C377.77,491.454,359.633,523.649,333.623,548.949z M504.732,284.166
+                  C445.188,375.619,316.77,436.218,210.568,457.86l-56.462-56.442c21.662-106.22,82.26-234.619,173.694-294.164
+                  c63.414-41.273,142.801-48.571,226.574-49.643C553.322,141.384,546.006,220.752,504.732,284.166z M410.904,248.983
+                  c26.449,0,47.881-21.432,47.881-47.881s-21.432-47.881-47.881-47.881s-47.881,21.432-47.881,47.881
+                  S384.455,248.983,410.904,248.983z"/>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <div class="nav super">
+          <ul>
+            <li><a href="#">Super 1</a></li>
+            <li><a href="#">Super 2</a></li>
+          </ul>
+        </div>
+        <div class="nav primary">
+          <ul>            
+            <li><a href="#">Primary 1</a></li>
+            <li class="important"><a href="#">Primary 2</a></li>
+            <li><a href="#">Primary 3</a></li>
+            <li class="important"><a href="#">Primary 4</a></li>
+            <li><a href="#">Primary 5</a></li>
+          </ul>
+        </div>
+        <div class="nav secondary">
+          <div class="togglish toggle-nav toggle-transition">
+            <input id="checkbox-nav" type="checkbox" />
+            <label for="checkbox-nav">
+              <svg class="ble-toggle-icon" viewBox="0 0 100 100">
+                <path d="M25 50 L75 50" stroke="black" />
+                <path d="M25 50 L75 50" />
+                <path d="M25 50 L75 50" />
+              </svg>             
+            </label>
+            <div class="target">
+              <ul>
+                <li><a href="#">Secondary 1</a></li>
+                <li><a href="#">Secondary 2</a></li>
+                <li><a href="#">Secondary 3</a></li>
+                <li><a href="#">Secondary 4</a></li>
+                <li><a href="#">Secondary 5</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>      
+    </div>
+
+    <p>Although the footprint is small, I have put together a SASS mix-in:</p>
+    <pre class="example">@import "mixins/togglish-helper.scss";
+
+$a: ( 
+  vars: ( --togglish-display: none ),
+  vars-checked: ( --togglish-display: block ),
+  target: ( display: var(--togglish-display) )
+);    
+
+.togglish {
+  @include togglish-helper(
+    map-get($a, vars), 
+    map-get($a, vars-checked), 
+    map-get($a, target)
+  );
+}</pre>
+
+
+    <h2>Pros</h2>
+    <ul>
+      <li>Minimal setup</li>
+      <li>No javascript</li>
+      <li>Easily change to fit any toggle need</li>
+    </ul>    
+
+    <h2>Cons</h2>
+    <ul>
+      <li>Strict markup sequence</li>
+      <li>Requires a unique id on toggle element(checkbox or radio)</li>
+      <li>Requires a for reference to id on toggle element label</li>
+    </ul>
+
+    <h2>Markup</h2>
+    <p>Minimal setup requeres 1 parent element and 3 child elements:</p>
+    <pre class="example">&lt;div class="togglish"&gt;
+  &lt;input id="togglish-check" type="checkbox" /&gt;
+  &lt;label for="togglish-check"&gt;Toggle&lt;/label&gt;
+  &lt;div class="target"&gt;
+    ...
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+
+
+
+
+    <footer></footer>
+
+  </body>
+
+</html>

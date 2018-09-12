@@ -1,0 +1,9 @@
+
+@mixin renderRule($property: opacity, $value: 1) {
+  #{$property}: $value;
+}
+@mixin renderRules($declarations) {
+  @each $property, $value in $declarations {
+    @include renderRule($property, $value);
+  }
+}

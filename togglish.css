@@ -1,0 +1,7 @@
+.togglish {
+  --togglish-display: none; }
+  .togglish .target {
+    display: var(--togglish-display); }
+  .togglish > input[type='checkbox']:checked ~ label + .target,
+  .togglish > input[type='radio']:checked ~ label + .target {
+    --togglish-display: block; }
