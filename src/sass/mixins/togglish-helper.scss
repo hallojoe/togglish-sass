@@ -1,16 +1,15 @@
 @import "render-rules.scss";
 
-@mixin togglish-helper($vars, $vars-checked, $target) {  
-  @include renderRules($vars);                      // render variables  
+@mixin togglish-helper($on, $off) {  
   .target {                                       // target
-    @include renderRules($target);                // render target rules
+    @include renderRules($off);                // render target rules
   }    
   > input[type='checkbox'],                         // checkbox and
   > input[type='radio'] {                           // radio    
     &:checked  {                                    // checked this      
       ~ label {                                     // label follewed by parent        
         +.target {                                // content follewed by this          
-          @include renderRules($vars-checked);      // render checked variables
+          @include renderRules($on);      // render checked variables
         }
       }
     }
